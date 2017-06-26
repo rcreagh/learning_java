@@ -1,3 +1,5 @@
+//Program that checks whether or not 3 integers are equal.
+
 public class Exercise_1_1_3{
 	public static void main(String[] args){
 		if(args.length != 3){
