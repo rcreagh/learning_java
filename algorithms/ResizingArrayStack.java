@@ -33,6 +33,9 @@ public class ResizingArrayStack<Item> implements Iterable<Item>
     }
   return item;
   }
+  // Iterator implemented so that 'foreach item in the stack' can be
+  // called on the stack, and the array implementation does not need
+  // to be known.
   public Iterator<Item> iterator(){
     return new ReverseArrayIterator();
   }
