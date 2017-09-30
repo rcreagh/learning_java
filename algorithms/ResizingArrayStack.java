@@ -5,16 +5,19 @@ public class ResizingArrayStack<Item> implements Iterable<Item>
 {
   // Create array of 'Objects' which will be 'Items' which can be of any data
   // type, yet to be defined.
-  private Item[] a = (Item[]) new Object[1];
+  private int capacity = 1;
+  private Item[] a = (Item[]) new Object[capacity];
   private int n = 0;
 
   public boolean isEmpty() {return n == 0;}
+  public boolean isFull() {return n == capacity;}
 
   public int size() {return n;}
 
   public void resize(int max){
     // Copy stack to new array of size max.
     Item[] temp = (Item[]) new Object[max];
+    capacity = max;
     for (int i = 0; i < n; i++){
       temp[i] = a[i];
     }
@@ -22,7 +25,7 @@ public class ResizingArrayStack<Item> implements Iterable<Item>
   }
   public void push(Item item){
     // Add item to the top of the stack.
-    if(n == a.length){resize(2*a.length);}
+    if(isFull()){resize(2*a.length);}
     a[n++] = item;
   }
   public Item pop(){
