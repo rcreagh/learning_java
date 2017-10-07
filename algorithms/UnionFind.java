@@ -1,6 +1,5 @@
 // This program implements union find.
 // Must know the total number of nodes.
-// NOTE: This is WIP.
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
