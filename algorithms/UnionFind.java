@@ -1,6 +1,9 @@
 // This program implements union find.
 // Must know the total number of nodes.
 // NOTE: This is WIP.
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class UnionFind {
     private int[] id;
@@ -12,7 +15,7 @@ public class UnionFind {
         id = new int[n];
         for (int i = 0; i < n; i++) {id[i] = i;}
         size = new int[n];
-        for (int i = 0; i < n;) {size[i] = 1;}
+        for (int i = 0; i < n; i++) {size[i] = 1;}
     }
     public int count() {return count;}
 
@@ -40,16 +43,17 @@ public class UnionFind {
             count --;
         }
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         // Test for union find.
         // Test takes a file of integers, where the first integer is the
         // total number of nodes in the graph. The rest of the integers are
         // pairs of nodes, which represent arcs in the graph.
-        int n = Integer.parseInt(args[0]);
+        Scanner scanner = new Scanner(new File(args[0]));
+        int n = scanner.nextInt();
         UnionFind uf = new UnionFind(n);
-        for (int k = 1; k < args.length; k += 2) {
-            int p = Integer.parseInt(args[k]);
-            int q = Integer.parseInt(args[k + 1]);
+        while (scanner.hasNextInt()) {
+            int p = scanner.nextInt();
+            int q = scanner.nextInt();
             uf.union(p, q);
         }
         System.out.println("Number of connected components: " + uf.count());
