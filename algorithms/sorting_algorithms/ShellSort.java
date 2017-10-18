@@ -1,12 +1,11 @@
-// This program implements insertion sort, a naive sorting method with O(n^2)
-// runtime in the worst case. This algorithm performs better if the data is
-// already almost sorted.
+// This program implements shell sort, a naive sorting method with
+// O(n^2) runtime in the worst case.
 
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class InsertionSort {
+public class ShellSort {
     public static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
     }
@@ -31,11 +30,16 @@ public class InsertionSort {
     }
 
     public static void sort(Comparable[] a) {
-     	int n = a.length;
-        for (int i = 1; i < n; i++) {
-    	    	    for (int j = i; j > 0 && less(a[j], a[j - 1]); j--) {
-    	    	    	    exchange(a, j, j - 1);
+    	    int n = a.length;
+    	    int h = 1;
+    	    while (h < n/3) {h = h * 3 + 1;}
+    	    while (h >= 1) {
+    	    	    for (int i = h; i < n; i++) {
+    	    	        for (int j = i; j >= h && less(a[j], a[j - h]); j -= h) {
+    	    	    	        exchange(a, j, j - h);
+    	    	        }
     	    	    }
+    	    	    h = h/3;
     	    }
     }
     // Creating a test client for SelectionSort.
