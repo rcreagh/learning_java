@@ -1,3 +1,6 @@
+// This program implements merge sort top down. Merge sort guarantees O(nlogn)
+// runtime, at the cost of additional space proportional to n.
+
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
