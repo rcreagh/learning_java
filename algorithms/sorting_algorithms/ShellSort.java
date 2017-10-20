@@ -1,5 +1,7 @@
-// This program implements shell sort, a naive sorting method with
-// O(n^2) runtime in the worst case.
+// This program implements ShellSort, a naive sorting method with
+// O(n^2) runtime in the worst case. Uses insertion sort. Takes advantage of
+// the fact that the closer a dataset is to being sorted, the faster insertion
+// sort is. The final value of h is 1, which is the same as insertion sort.
 
 import java.util.Scanner;
 import java.io.File;
@@ -42,7 +44,7 @@ public class ShellSort {
     	    	    h = h/3;
     	    }
     }
-    // Creating a test client for SelectionSort.
+    // Creating a test client for ShellSort.
     public static void main(String[] args) throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(args[0]));
         Integer[] a = new Integer[15]; // Hacky, just to get working.
